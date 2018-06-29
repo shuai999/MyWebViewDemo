@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+      <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+      <meta http-equiv="description" content="this is my page">
+     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<script type="text/javascript">  
+
+		/**
+			结算方法
+		*/
+
+
+		<!-- js调用android方法  start-->
+
+	   function showToast(toast) { 
+			var money=toast*3;
+			javascript:android.showToast(money);
+        }
+
+        <!-- js调用android方法  end-->
+
+
+
+		function funFromjs(){
+    		document.getElementById("helloweb").innerHTML="div显示数据,无参数";
+        }
+	    function funJs(msg){
+    	    document.getElementById("hello2").innerHTML=msg;
+         }
+
+
+
+
+		<!-- 以下是android调用js的2种方法：-->
+
+		<!-- 方法1：通过webview的loadUrl("javascript:sum(6,6)")  -->
+		function sum(i,m){
+           var result = i+m;
+           document.getElementById("h").innerHTML= "Android调用JS方法且有返回值--计算结果="+result;
+           javascript:android.onSum(result)
+        }
+
+
+		<!-- 方法2：通过webview的 evaluateJavascript("sumn(6,11)")  -->
+		function sumn(i,m){
+           var result = i*m; 
+           document.getElementById("hh").innerHTML= "Android调用JS方法且有返回值--计算结果="+result; 
+           return result;
+        } 
+	
+    </script> 
+
+    <style type="text/css">
+    	input{
+    		width: 100px;
+    		height: 100px;
+    		margin: 20px;
+    	}
+		
+    </style>
+
+</head>
+
+<body>
+		
+	 <input type="button" value="结算" onclick="showToast('12')">
+	   <div id="helloweb"> 
+
+	  </div>
+	  <div id="hello2"> 
+
+	  </div>
+	  <div id="h"> 
+
+	  </div>
+	   <div id="hh"> 
+
+	  </div>
+	 
+</body>
+</html>
